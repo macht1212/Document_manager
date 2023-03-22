@@ -22,3 +22,11 @@ class AddInfo:
             VALUES (%s, %s, %s, %s, %s, %s, %s);
         ''', (series, number, version, title, cost, customer.get_company_id(self.cur, customer),
               executor.get_company_id(self.cur, executor)))
+
+    def add_approver_info(self, employee_name, department):
+        self.cur.execute('''
+        INSERT INTO approves (employee_name, department)
+            VALUES (%s, %s);
+        ''', (employee_name, department, ))
+
+

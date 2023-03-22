@@ -18,7 +18,7 @@ def create_tables():
 def add_info():
     with connect(database='doc_manager', user='postgres', password='postgres') as conn:
         with conn.cursor() as cur:
-            command = input('Ввести данные компании [company] или договора (contract)')
+            command = input('Ввести данные компании [company] или договора (contract): ')
             if command == 'company':
                 company_name = input('Введите название компании: ')
                 inn = input('Введите ИНН компании: ')
@@ -40,6 +40,12 @@ def add_info():
 
                 contract_info = AddInfo(cur)
                 contract_info.add_contract_info(series, number, version, title, cost, customer, executor)
+
+            elif command == 'approver':
+                employee_name = input('Введите ФИО сотрудника: ')
+                department = input('Введите название офиса сотрудника: ')
+                approve = AddInfo(cur)
+                approve.add_approver_info(employee_name, department)
 
 
 def update_info():
