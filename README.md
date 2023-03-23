@@ -16,12 +16,13 @@ two methods:
 ``` 
 - creates three tables (company_info, contract_info, 
 approver_info)   
-This class uses in ```def create_tables():``` (DB_main.py module)
+
 
 ```python
 .drop_tables()
 ```
  - dropped all tables (if it necessary).
+
 
 This class uses in ```def create_tables():``` (DB_main.py module)
 
