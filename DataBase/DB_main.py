@@ -52,6 +52,22 @@ def update_info():
     with connect(database='doc_manager', user='postgres', password='postgres') as conn:
         with conn.cursor() as cur:
             update = UpdateInfo(cur)
-            update.update_approver_info()
-            update.update_company_info()
-            update.update_contract_info()
+            command = input('Введите данные для изменения компании (company) или договора (contract): ')
+            if command == 'company':
+                company_name = input('Введите название компании: ')
+                company_name_new = input('Введите новое название компании: ')
+                inn = input('Введите ИНН компании: ')
+                inn_new = input('Введите новый ИНН компании: ')
+                ogrn = input('Введите новый ОГРН компании: ')
+                signer = input('Введите нового подписанта (ФИО): ')
+                authority = input('Введите новое основание подписи: ')
+                update.update_company_info(company_name, inn, company_name_new=company_name_new, inn_new=inn_new,
+                                           ogrn=ogrn, signer=signer, authority=authority)
+
+            elif command == 'contract':
+                update.update_contract_info()
+
+            elif command == 'approver':
+                update.update_approver_info()
+
+

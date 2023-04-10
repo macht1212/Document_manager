@@ -1,4 +1,4 @@
-from DataBase.DB_main import create_tables, add_info
+from DataBase.DB_main import create_tables, add_info, update_info
 
 
 def main():
@@ -11,7 +11,7 @@ def main():
             add_info()
 
         elif command == 'update info':
-
+            update_info()
 
         elif command == 'exit':
             exit()
